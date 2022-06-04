@@ -1,16 +1,5 @@
 <template>
   <button
-    v-if="id > 1"
-    @click="
-      router.push({
-        name: 'level',
-        params: { level: props.level, id: props.id - 1 },
-      })
-    "
-  >
-    Back
-  </button>
-  <button
     v-if="id < 5"
     @click="
       router.push({
@@ -21,7 +10,18 @@
   >
     Next
   </button>
-  <button @click="router.push({ name: 'index' })">Home</button>
+  <button
+    v-if="id > 1"
+    @click="
+      router.push({
+        name: 'level',
+        params: { level: props.level, id: props.id - 1 },
+      })
+    "
+  >
+Back 
+ </button>
+  <button class="home" @click="router.push({ name: 'index' })">Home</button>
 </template>
 
 <script setup>
@@ -46,6 +46,10 @@ const pushRoute = (nextId) => {
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 a {
   text-decoration: none;
+}
+.home{
+  border: 1px solid rgb(211, 59, 59);
+  margin-left: 1rem;
 }
 button {
   display: flex;
